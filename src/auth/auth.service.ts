@@ -34,8 +34,7 @@ export class AuthService {
     });
   }
 
-  async login({ name, _id }: UserInfoDto): Promise<IToken> {
-    const payload = { name, _id };
+  async login(payload: UserInfoDto): Promise<IToken> {
     return {
       access_token: await this.jwtService.signAsync(payload, {
         secret: process.env[Config.Secret],

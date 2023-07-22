@@ -11,7 +11,7 @@ import { ConfigModule } from '@nestjs/config';
     ProtectedModule,
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: `.${process.env[Config.Mode]}.env`,
+      envFilePath: `.${process.env[Config.Mode] || 'development'}.env`,
     }),
     MongooseModule.forRoot(process.env[Config.DbUrl]),
   ],
